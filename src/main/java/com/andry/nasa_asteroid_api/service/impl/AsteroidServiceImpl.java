@@ -51,6 +51,7 @@ public class AsteroidServiceImpl implements AsteroidService {
     }
 
     @Override
+    @Cacheable(value = "asteroid-detail", key = "#id")
     public AsteroidDetailResponse getAsteroidDetail(String id) {
         NeoLookupApiResponse response = nasaNeoLookupClient.getNeoById(id);
 
