@@ -1,5 +1,6 @@
 package com.andry.nasa_asteroid_api.dto.response;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AsteroidResponse {
+public class AsteroidResponse implements Serializable {
     private String id;
     private String name;
     private String nasaJplUrl;

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.andry.nasa_asteroid_api.client.NasaNeoFeedClient;
@@ -35,6 +36,7 @@ public class AsteroidServiceImpl implements AsteroidService {
     private final NasaNeoLookupClient nasaNeoLookupClient;
 
     @Override
+    @Cacheable(value = "asteroids", key = "#startDate + '_' + #endDate + '_' + #limit")
     public List<AsteroidResponse> getAsteroids(LocalDate startDate, LocalDate endDate, int limit) {
         NeoFeedApiResponse response = nasaNeoFeedClient.getNeoFeed(startDate, endDate);
 
