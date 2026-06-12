@@ -3,6 +3,12 @@ spring:
     name: nasa-asteroid-api
   config:
     import: optional:file:.env[.properties]
+  cache:
+    type: redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 nasa:
   api:
     api-key: ${NASA_API_KEY:DEMO_KEY}
